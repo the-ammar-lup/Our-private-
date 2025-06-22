@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You, My Love ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fonts: Axe-style Premium -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-gradient: linear-gradient(120deg, #fceabb 0%, #f8b500 51%, #fceabb 100%);
+      --panel-gradient: linear-gradient(135deg, #ffe1f1 0%, #c2e9fb 100%);
+      --heart-color: #ff5b87;
+      --heart-glow: #ffb6c1;
+      --shadow: 0 12px 32px 0 rgba(255, 105, 180, 0.15);
+      --sparkle: #ffe6fa;
+      --bg-glow: 255, 222, 233;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', Arial, sans-serif;
+      overflow-x: hidden;
+      background: var(--main-gradient);
+      background-size: 300% 300%;
+      animation: gradient-move 12s ease-in-out infinite;
+    }
+    @keyframes gradient-move {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    /* Floating Hearts and Sparkles */
+    .floating-heart, .sparkle {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+    }
+    .floating-heart {
+      width: 32px; height: 32px;
+      opacity: 0.19;
+      z-index: 1;
+      animation: float-heart 8s linear infinite;
+    }
+    @keyframes float-heart {
+      0% {transform: translateY(100vh) scale(1) rotate(0deg); opacity: 0.22;}
+      80% {opacity: 0.28;}
+      100% {transform: translateY(-10vh) scale(0.8) rotate(50deg); opacity: 0;}
+    }
+    .sparkle {
+      width: 16px; height: 16px;
+      background: radial-gradient(circle, var(--sparkle) 60%, transparent 100%);
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: sparkle-float 7s linear infinite;
+      z-index: 0;
+    }
+    @keyframes sparkle-float {
+      from {transform: translateY(100vh) scale(1);}
+      to   {transform: translateY(-10vh) scale(0.6);}
+    }
+    /* Card Styling */
+    #love-card-outer {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      position: relative;
+    }
+    #love-card {
+      width: 97vw;
+      max-width: 830px;
+      min-width: 310px;
+      background: var(--panel-gradient);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: row;
+      justify-content: stretch;
+      align-items: stretch;
+      overflow: hidden;
+      border: 2.5px solid #fff6;
+      animation: card-in 1.3s cubic-bezier(.62,.2,.35,1.01);
+      position: relative;
+      /* subtle glass effect */
+      backdrop-filter: blur(1px);
+    }
+    @keyframes card-in {
+      0% {transform:scale(0.92) rotateY(40deg); opacity:0;}
+      55%{transform:scale(1.04) rotateY(-6deg);}
+      90%{transform:scale(0.98) rotateY(2deg);}
+      100%{transform:scale(1) rotateY(0deg); opacity:1;}
+    }
+    .panel {
+      width: 50%;
+      padding: 52px 38px 44px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      background: transparent;
+      min-height: 340px;
+      position: relative;
+      z-index: 2;
+      transition: background 0.3s;
+    }
+    .panel.left {
+      border-right: 1.5px solid #fff7;
+    }
+    .panel.right {
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+    /* Responsive for Mobile */
+    @media (max-width: 700px) {
+      #love-card { flex-direction: column; }
+      .panel { width: 100%; min-height: 120px; padding: 20px 10px 16px 10px;}
+      .panel.left { border-right: none; border-bottom: 1.5px solid #fff9;}
+      .panel.right { align-items: flex-end; justify-content: flex-end;}
+    }
+    /* Typography */
+    .love-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.35em;
+      color: var(--heart-color);
+      font-weight: 500;
+      margin-bottom: 0.44em;
+      letter-spacing: 0.04em;
+      text-shadow: 0 4px 16px #fff4;
+      animation: fadein-up 1.2s;
+    }
+    @keyframes fadein-up {
+      0% { opacity: 0; transform: translateY(30px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+    .love-letter {
+      font-size: 1.07em;
+      color: #c14b6e;
+      font-family: 'Montserrat', Arial, sans-serif;
+      line-height: 1.7;
+      letter-spacing: .01em;
+      animation: fadein-up 1.6s 0.18s both;
+      margin-bottom: 1.2em;
+    }
+    .quote {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.24em;
+      color: #bc13fe;
+      margin: 1em 0 0.6em 0;
+      line-height: 1.3;
+      font-style: italic;
+      background: #ffe6f7bb;
+      padding: 0.2em 0.9em;
+      border-radius: 10px;
+      box-shadow: 0 1px 6px #bc13fe13;
+      animation: fadein-up 1.8s 0.3s both;
+    }
+    .signature {
+      font-family: 'Great Vibes', cursive;
+      color: var(--heart-color);
+      font-size: 1.7em;
+      text-align: right;
+      text-shadow: 0 2px 8px #fff7;
+      letter-spacing: 0.08em;
+      margin-top: 2.2em;
+      animation: fadein-right 1.7s 0.2s both;
+    }
+    @keyframes fadein-right {
+      0% { opacity: 0; transform: translateX(40px);}
+      100% { opacity: 1; transform: translateX(0);}
+    }
+    .heart-graphic {
+      margin-top: 18px;
+      width: 68px;
+      height: 68px;
+      display: block;
+      filter: drop-shadow(0 0 16px #ffb5db77);
+      animation: heart-pulse 1.3s infinite;
+    }
+    @keyframes heart-pulse {
+      0% {transform:scale(1);}
+      55% {transform:scale(1.11);}
+      100%{transform:scale(1);}
+    }
+    /* Next/Prev Navigation */
+    #nav-arrows {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 22px;
+      z-index: 15;
+    }
+    #nav-arrows button {
+      background: var(--main-gradient);
+      border: none;
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      cursor: pointer;
+      box-shadow: 0 2px 18px #ffb6c1aa;
+      display: flex;
+      align-items: center;justify-content: center;
+      opacity: 0.94;
+      transition: background 0.17s, transform 0.17s;
+    }
+    #nav-arrows button:active { background: #fd6f9a; transform: scale(1.11);}
+    #nav-arrows svg { width: 28px;height:28px;fill: #fff;filter: drop-shadow(0 0 6px #ffb6c1aa);}
+    #page-indicator {
+      position: absolute;
+      bottom: 10px;left: 50%;transform: translateX(-50%);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.99em;
+      color: #ba4982;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      z-index: 9;
+      text-shadow: 0 2px 8px #fff7;
+    }
+    ::-webkit-scrollbar {width: 0;background: transparent;}
+  </style>
+</head>
+<body>
+<!-- Floating hearts & sparkles -->
+<script>
+  // Floating SVG hearts
+  for(let i=0;i<10;i++) {
+    let el = document.createElement('span');
+    el.className = 'floating-heart';
+    el.style.left = (5+Math.random()*90)+'vw';
+    el.style.top = (30+Math.random()*60)+'vh';
+    el.style.animationDelay = (Math.random()*9)+'s';
+    el.innerHTML = `<svg viewBox="0 0 60 60"><path d="M30 49s-16-11.9-16-23.5S20.5 7 30 17.5 46 7 46 25.5 30 49 30 49z" fill="#ff5b87" stroke="#e44d9a" stroke-width="2"/></svg>`;
+    document.body.appendChild(el);
+  }
+  // Floating sparkles
+  for(let i=0;i<14;i++) {
+    let el = document.createElement('span');
+    el.className = 'sparkle';
+    el.style.left = (3+Math.random()*94)+'vw';
+    el.style.top = (18+Math.random()*75)+'vh';
+    el.style.animationDelay = (Math.random()*7)+'s';
+    document.body.appendChild(el);
+  }
+</script>
+<div id="love-card-outer">
+  <div id="love-card">
+    <div class="panel left">
+      <div class="love-title" id="love-title"></div>
+      <div class="love-letter" id="love-letter"></div>
+    </div>
+    <div class="panel right" style="align-items:flex-end;justify-content:space-between;">
+      <svg class="heart-graphic" viewBox="0 0 80 80">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+            <stop offset="60%" stop-color="#ffb6c1" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#ff5b87" stop-opacity="0.48"/>
+          </radialGradient>
+        </defs>
+        <path d="M40 68s-21-16-21-32S30 8 40 23 61 8 61 36 40 68 40 68z"
+          fill="url(#glow)" stroke="#e44d9a" stroke-width="3"/>
+        <animateTransform attributeName="transform" attributeType="XML" type="scale"
+          values="1;1.07;1" keyTimes="0;0.5;1" dur="1.4s" repeatCount="indefinite"/>
+      </svg>
+      <div class="signature" id="signature"></div>
+    </div>
+    <div id="nav-arrows">
+      <button id="prev-btn" title="Previous" style="display:none;">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+      </button>
+      <button id="next-btn" title="Next">
+        <svg viewBox="0 0 24 24"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"></path></svg>
+      </button>
+    </div>
+    <div id="page-indicator"></div>
+  </div>
+</div>
+<script>
+const pages = [
+  {
+    title: "I LOVE YOU MERA BACHA",
+    letter: `<b>Dear [ADIBAMMAR],</b><br><br>
+      Do I really need a reason to love you? Maybe not...<br><br>
+      Every day, your smile and your words teach me how to fall in love all over again.<br>
+      Today isn’t a special day… but you, you are always special 💫`,
+    signature: ""
+  },
+  {
+    title: "",
+    letter: `There’s no day when I don’t thank God for giving me <i>you</i>.<br>
+      You are my person, my peace, and my chaos — all at once.<br>
+      You're not just beautiful — you're trouble.<br>
+      Because every time I think of you, I smile like an idiot.`,
+    signature: ""
+  },
+  {
+    title: "",
+    letter: `<div class="quote">
+        "I’m the one who hears only your voice even in the loudest noise of the world, and you’re the one whose single video lights up the loneliness of my nights. When you pout in your own little way, like an adorably angry fairy, you still look like the most beautiful thing my eyes have ever seen."
+      </div>
+      Maybe that’s why, when you walk down a path that brings me pain, my heart doesn’t just break… it shatters.<br>
+      You’ve become more than just my reality — you’re the story my soul lives in now.`,
+    signature: ""
+  },
+  {
+    title: "",
+    letter: `When you go against me, it feels like my own world is turning its back on me.<br>
+      But the truth is, I only get upset because you are mine.<br>
+      You are my smile, the happiness of my soul, and the light in the darkness of my nights.<br>
+      I just want you to understand… the ones we love the most, they are the ones who can hurt us the deepest.`,
+    signature: ""
+  },
+  {
+    title: "",
+    letter: `But even that pain doesn’t matter… because you matter more.<br>
+      Always, mera bacha 💞😘.<br>
+      <div class="quote">“You are my everything.”</div>`,
+    signature: `I love you ❤️<br>– Aapka [AMMAR]`
+  }
+];
+
+const loveTitle = document.getElementById('love-title');
+const loveLetter = document.getElementById('love-letter');
+const signature = document.getElementById('signature');
+const navPrev = document.getElementById('prev-btn');
+const navNext = document.getElementById('next-btn');
+const pageIndicator = document.getElementById('page-indicator');
+let currentPage = 0;
+
+function showPage(idx) {
+  currentPage = idx;
+  loveTitle.innerHTML = pages[idx].title || "";
+  loveLetter.innerHTML = pages[idx].letter;
+  signature.innerHTML = pages[idx].signature || "";
+  navPrev.style.display = (idx === 0) ? 'none' : '';
+  navNext.style.display = (idx === pages.length-1) ? 'none' : '';
+  pageIndicator.innerHTML = `Page ${idx+1} / ${pages.length}`;
+}
+
+navPrev.onclick = ()=>showPage(Math.max(0,currentPage-1));
+navNext.onclick = ()=>showPage(Math.min(pages.length-1,currentPage+1));
+// Mobile tap
+loveLetter.onclick = ()=>{if (currentPage<pages.length-1) navNext.click();}
+loveTitle.onclick = ()=>{if (currentPage<pages.length-1) navNext.click();}
+signature.onclick = ()=>{if (currentPage<pages.length-1) navNext.click();}
+window.addEventListener('keydown', (e)=>{
+  if (e.key==='ArrowRight' || e.key==='d') navNext.click();
+  if (e.key==='ArrowLeft' || e.key==='a') navPrev.click();
+});
+// Swipe navigation for mobile
+let touchStartX = null;
+document.getElementById('love-card').addEventListener('touchstart', e=>{
+  if (e.touches.length===1) touchStartX = e.touches[0].clientX;
+});
+document.getElementById('love-card').addEventListener('touchend', e=>{
+  if (touchStartX!==null) {
+    let dx = e.changedTouches[0].clientX - touchStartX;
+    if (dx < -40) navNext.click();
+    else if (dx > 40) navPrev.click();
+    touchStartX = null;
+  }
+});
+showPage(0);
+</script>
+</body>
+</html>
